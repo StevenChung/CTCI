@@ -27,3 +27,17 @@ var isUnique = (str) => {
   }
   return true;
 };
+
+/*
+Hints from the back:
+1) Try a hash table (done)
+2) Can you achieve O(n log n) time? (done? Isn't the above just (O(n)) on time?)
+If you specifically wanted n log n, you could sort the str and check to see if adjacent are equal.
+`n log n` is an indication of sorting!
+3) Could a bit vector be useful? https://en.wikipedia.org/wiki/Bit_array
+
+Ask about assumptions off the bat
+If str.length > 128 (ASCII set), it cannot be, so we could save some modicum of work
+
+For no additional structures, you would have to check every previous letter before it
+this ensures O(1), but O(n^2) time.
