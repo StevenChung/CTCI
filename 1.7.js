@@ -37,25 +37,41 @@ rotateMatrix([
 
 var rotateMatrix = (matrix, clockwise = true) => {
   let returnMatrix = matrix.slice();
+  // this version does not mutate in place; returns a rotated copy
   let even = ((matrix[0].length % 2) === 0) ? true : false;
+  // this turns out to be unnecessary with the above slice, but, for odd, the center is intact
+
   let iterationCount = Math.floor(matrix[0].length / 2);
-  let min = 0;
+  // you basically rotate as layers and you rotate equal to the length / 2 to math.floor
+  // i.e. 5x5 matrix would need 2 iterations (outer layer, then the next layer)
+  // i.e. 3x3 matrix only needs 1
+
+  let min = 0; // start from the outside
   let max = matrix[0].length;
 
   if (clockwise) {
+    // clockwise!
     while (iterationCount > 0) {
-      let firstRow = matrix[min].slice(min, max);
+      // do this until iterationcount is 0
+      let firstRow = matrix[min].slice(min, max); // slice is not inclusive of max
       let lastRow = matrix[max - 1].slice(min, max);
       let firstColumn = [];
       let lastColumn = [];
       for (let i = min; i < max; i++) {
         firstColumn.push(matrix[i][min]);
+        // push the first col
         lastColumn.push(matrix[i][max - 1]);
+        // push the last col
+        // if we had just done max here, it would have to be max+1 above
       }
 
       for (let j = max - 1, i = 0; j >= min; j--, i++) {
         returnMatrix[max - 1][j] = lastColumn[i];
+        // lastRow is set to the last col
+        // order is reversed, hence j decrementing and i incrementing
         returnMatrix[min][j] = firstColumn[i];
+        // firstrow is set to the first column
+        // order is reversed, hence j decrementing and i incrementing
       }
 
       for (let i = min, j = 0; i < max; i++, j++) {
@@ -77,6 +93,7 @@ var rotateMatrix = (matrix, clockwise = true) => {
     }
   } else {
     while (iterationCount > 0) {
+      // see above for counter-clockwise, but inverse
       let firstRow = matrix[min].slice(min, max);
       let lastRow = matrix[max - 1].slice(min, max);
       let firstColumn = [];
