@@ -12,6 +12,10 @@ E: string is just one character
 */
 
 var isUnique = (str) => {
+  if (str.length > 128) {
+    return false;
+    // only 128 chars in ASCII, so anything greater must have some duplicate
+  }
   if (str.length <= 1) {
     return true;
   }

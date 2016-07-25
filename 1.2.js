@@ -38,3 +38,13 @@ var checkPermutation = (str1, str2) => {
   return true;
 };
 // O(n) space // O(n) time (for loops with O(1) operations)
+// for string questions, always confirm:
+/*
+a) space?
+b) case sensitivity?
+c) what other edge cases?
+
+Two solutions: sort the two strings and compare letters
+O(n log n) for time (sorting), but it's cleaner
+
+Above solution is O(n) (two-scan) approach
