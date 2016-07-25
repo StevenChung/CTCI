@@ -18,6 +18,8 @@ if length is even, there can be no count of 1
 Base case is character length, then deciding how to proceed
 always check for errors early on
 ALWAYS THINK ABOUT SPACES ALWAYS ASK ABOUT SPACES
+ASK ABOUT CASE SENSITIVITY
+Gail recommends: "What are defining features of a palindrome?"
 */
 
 
@@ -64,3 +66,5 @@ var palindromePermutation = (str) => {
   // if even, all must be even counts
   // if odd, only one character can have an odd count
 };
+
+// Your original (above) is O(n), length of string

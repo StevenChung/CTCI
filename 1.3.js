@@ -15,3 +15,5 @@ var URLify = (str) => {
   // could you do it in O(1) space?
   return str.split('').map( (char) => (char === ' ') ? '%20' : char ).join('');
 };
+
+// seems trivial in JS with the above
