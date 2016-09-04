@@ -1,5 +1,6 @@
 /*
-1.5) One Away: There are three types of edits to a given string: insert a character, remove a character, or replace a character.
+1.5) One Away: There are three types of edits to a given string: insert a character,
+ remove a character, or replace a character.
 Given two strings, write a function to check if they are one edit away (or zero).
 
 I: Two strings
@@ -15,47 +16,37 @@ Is it one edit per string or one total edit?
 */
 
 var oneAway = (str1, str2) => {
-  // the diff between the lengths needs to be between (inclusive) -1 and 1
+  if (str1 === str2) {
+    return true;
+  } else if (Math.abs(str1.length - str2.length) > 1) {
+    return false;
+  } else {
+    var hashitout = (str) => str.split('').reduce((a, b) => {
+      a[b] = (a[b] || 0) + 1;
+      return a;
+    }, {});
+    var hashOne = hashitout(str1);
+    var hashTwo = hashitout(str2);
+    var booboo = 0;
 
-  if (str1.length === str2.length) {
-    if (str1 === str2) {
-      return true;
-    }
-
-    let booboo = false;
-    for (let i = 0; i < str1.length; i++) {
-      if (str1[i] !== str2[i]) {
-        if (!booboo) {
-          booboo = true;
-        } else {
-          return false;
-        }
+    for (var key in hashTwo) {
+      if (!(key in hashOne) || (hashOne[key] !== hashTwo[key])) {
+        booboo++;
       }
-    }
-  }
 
-  let longerString = (str1.length > str2.length) ? str1 : str2;
-  let shorterString = (str1.length > str2.length) ? str2 : str1;
-  let booboo = false;
-  for (let i = 0; i < longerString.length; i++) {
-    if (!booboo) {
-      if (longerString[i] !== shorterString[i]) {
-        booboo = true;
-        // ple pale
-      }
-    } else {
-      if ((longerString[i] !== shorterString[i - 1]) && (longerString[i] !== shorterString[i])) {
+      if (booboo > 1) {
         return false;
       }
     }
+
+    return true;
   }
-
-  return true;
 };
-
 
 /// WRITE ALL PERMUTATIONS / CONSIDER ALL PERMUTATIONS
 // DO NOT JUMP INTO CODING
 // PSEUDOCODE
 // WRITE DIAGRAMS ETC.
 // BE PATIENT
+// consider all possibilities/edge cases
+// i would try to not erase IOCE, but other stuff should be safe

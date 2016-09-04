@@ -12,7 +12,7 @@ O: boolean
 C: As efficient as possible in terms of space and time
 E: Length is 1 or less => Palindrome
 
-There can be one character that has an odd count and only if the overall length is odd;
+There can must be one character that has an odd count and only if the overall length is odd;
 if length is even, there can be no count of 1
 
 Base case is character length, then deciding how to proceed
