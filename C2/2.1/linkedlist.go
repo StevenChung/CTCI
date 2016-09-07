@@ -202,27 +202,3 @@ func (l *DoublyLinkedList) CircularListCheck() bool {
 
   return false
 }
-
-func main() {
-  newList := new(DoublyLinkedList)
-  newList.AddToHead(Value{"steven", 2})
-  newList.AddToHead(Value{"jaina", 1})
-  newList.AddToTail(Value{"thrall", 3})
-  newList.AddToTail(Value{"rexxar", 5})
-  newList.AddToTail(Value{"uther", 6})
-
-  newList.InsertAtIndex(2, Value{"gondar", 7})
-  newList.InsertAtIndex(4, Value{"voljin", 17})
-  newList.DeleteFromIndex(2);
-  newList.DeleteFromIndex(4);
-
-  fmt.Println(newList.CircularListCheck())
-  newList.Last().Next = newList.First()
-  fmt.Println(newList.CircularListCheck())
-
-  for i := 0; i < newList.Length; i++ {
-    fmt.Println(newList.RetrieveAtIndex(i))
-  }
-}
-// Check to see if a LinkedList is a palindrome
-// Reverse a LinkedList iteratively and recursively (presumably single?)
