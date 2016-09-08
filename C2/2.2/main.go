@@ -44,7 +44,10 @@ func (l *DoublyLinkedList) RetrieveKthToLast(k int) (*Node, error) {
 }
 
 func main() {
-  newList := new(DoublyLinkedList)
+  newList := &DoublyLinkedList{}
+  // memory allocation/value intialization
+  // of *DoublyLinkedList type
+  // pointer methods!
   newList.AddToHead(Value{"Test", 1})
   newList.AddToHead(Value{"Test", 1})
   newList.AddToHead(Value{"Test", 1})
