@@ -12,7 +12,7 @@ type Value struct {
 
 type Node struct {
   Value
-  Next, Previous *Node // pointer to another Node
+  Next, Previous *Node // pointer to the address of a Node
 }
 
 type DoublyLinkedList struct {
@@ -33,6 +33,7 @@ func (l *DoublyLinkedList) AddToHead(v Value) *DoublyLinkedList {
   // the value once passed (or that's how I interpret this approach)
 
   newNode := &Node{Value: v}
+  // Pointer to a Node that has the Value v
   // has type *Node
   // & prefix returns a pointer to the struct value
 
