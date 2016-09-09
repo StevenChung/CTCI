@@ -42,7 +42,7 @@ var palindromePermutation = (str) => {
     }
   }
 
-  let even = ((charLength % 2) === 0) ? true : false ;
+  let even = ((charLength % 2) === 0) ? true : false;
   let oddCountAlready = false;
 
   for (let key in obj) {

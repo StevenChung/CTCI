@@ -26,49 +26,55 @@ import (
 func OneAway (a, b string) bool {
   if a == b {
     return true
-    // if they're the same string, it's true!
-  } else if math.Abs(float64(len(a) - len(b))) > 1 {
-    // if the difference in length is greater than one, removing, adding or
-    // replacing one character will not suffice, so it must be false
+  } else if math.Abs(float64(len(a) - len(b))) > 1.0 {
     return false
-  } else {
-    runeHashA := map[rune]int{}
-    runeHashB := map[rune]int{}
-    // to initiate a map, need to either use make OR
-    // type inference assignment with curly braces
-
-    for _, runevalue := range a {
-      // range on a string offers the index and the RUNE value
-	     if runeHashA[runevalue] == 0 {
-         runeHashA[runevalue] = 1
-       } else {
-         runeHashA[runevalue] += 1
-       }
-    }
-    for _, runevalueb := range b {
-      // range on a string offers the index and the RUNE value
-       if runeHashB[runevalueb] == 0 {
-         runeHashB[runevalueb] = 1
-       } else {
-         runeHashB[runevalueb] += 1
-       }
-    }
-
-    flawcounter := 0
-    for k, _ := range runeHashA {
-      if runeHashB[k] == 0 || runeHashA[k] != runeHashB[k] {
-        flawcounter++
-      }
-      if flawcounter > 1 {
+  } else if len(a) == len(b) {
+    oneFlaw := false
+    runeB := []rune(b)
+    for index, val := range(a) {
+      if (runeB[index] != val) && (oneFlaw == false) {
+        oneFlaw = true
+      } else if (runeB[index] != val) && (oneFlaw) {
         return false
       }
     }
     return true
+  } else {
+    oneFlaw := false
+    longerString := []rune{}
+    shorterString := []rune{}
 
+    if len(a) > len(b) {
+      longerString = []rune(a)
+      shorterString = []rune(b)
+    } else {
+      longerString = []rune(b)
+      shorterString = []rune(a)
+    }
+
+    fmt.Println(longerString, shorterString, oneFlaw)
+
+    for i, j := 0, 0; i < len(longerString); i, j = i + 1, j + 1 {
+      // i is pointer for longer string
+      // j is pointer for shorter sting
+
+      if j > (len(shorterString) - 1) {
+        return true
+      }
+
+      if (longerString[i] != shorterString[j]) && (oneFlaw == false) {
+        oneFlaw = true
+        j--
+        fmt.Println(j)
+      } else if (longerString[i] != shorterString[j]) && (oneFlaw) {
+        return false
+      }
+    }
+    return true
   }
 }
 func main() {
-  fmt.Println(OneAway("dag", "dog"))
+  fmt.Println(OneAway("tacty", "ttcy"))
 }
 
 // Time: O(n) Space: O(n)
