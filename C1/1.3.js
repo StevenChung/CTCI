@@ -13,7 +13,7 @@ var URLify = (str) => {
   // at the end, join array and return that str
   // O(n) time, O(n) space
   // could you do it in O(1) space?
-  return str.split('').map( (char) => (char === ' ') ? '%20' : char ).join('');
+  return str.split('').map((char) => (char === ' ') ? '%20' : char).join('');
 };
 
 // seems trivial in JS with the above

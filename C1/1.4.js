@@ -40,6 +40,7 @@ var palindromePermutation = (str) => {
       obj[str.charAt(i)] = (obj[str.charAt(i)] || 0) + 1;
       charLength++;
     }
+    // ignore spaces
   }
 
   let even = ((charLength % 2) === 0) ? true : false;

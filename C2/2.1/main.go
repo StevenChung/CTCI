@@ -63,3 +63,4 @@ func main() {
   }
 
 }
+// RUNNERS FOR LINKED LISTS (i.e. ITERATION)

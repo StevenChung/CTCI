@@ -14,6 +14,7 @@ If so, return true.
 Space?
 Case sensitivity?
 Empty string and a letter?
+Mismatch in middle of a string vs mismatch at the end
 */
 
 package main
@@ -52,8 +53,6 @@ func OneAway (a, b string) bool {
       shorterString = []rune(a)
     }
 
-    fmt.Println(longerString, shorterString, oneFlaw)
-
     for i, j := 0, 0; i < len(longerString); i, j = i + 1, j + 1 {
       // i is pointer for longer string
       // j is pointer for shorter sting
@@ -69,6 +68,9 @@ func OneAway (a, b string) bool {
       } else if (longerString[i] != shorterString[j]) && (oneFlaw) {
         return false
       }
+      // consider insertion/delete as roughly the same, but where it occurs is why we have
+      // two scenarios above
+      // inserting/deleting in the middle is different from the ends
     }
     return true
   }

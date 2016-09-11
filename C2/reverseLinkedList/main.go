@@ -34,10 +34,17 @@ func (l *LinkedList) RecursiveReverse(n *Node) {
   oldNext := n.Next
   oldNext.Next = n
   n.Next = nil
+  // the old next is equal to n's next
+  // the old next's next is reversed (set to n)
+  // n's next is set to nil
+  // at the head, this would mean it become the tail (i.e. not have a next)
 }
 
 func main() {
   newList := &LinkedList{}
+  // new vs &LinkedList{} vs just starting a variable with type *LinkedList
+  // new and &LinkedList{} saves memory with nil values
+  // new variable with type *LinkedList is a nil reference
   newList.Append(2)
   newList.Append(3)
   newList.Append(4)
