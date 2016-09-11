@@ -2,11 +2,11 @@ package main
 
 type Node struct {
   Value int
-  Next *Node // pointer to the address of another Noe
+  Next *Node // pointer to the address of another Node
 }
 
 type LinkedList struct {
-  Head *Node // pointer to the address of another Noe
+  Head *Node // pointer to the address of another Node
 }
 
 func (l *LinkedList) Append(n int) {
