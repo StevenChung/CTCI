@@ -33,6 +33,7 @@ class Queue {
       } else {
         this.first = nodeToReturn.next;
       }
+
       return nodeToReturn.val;
     }
   }
@@ -49,7 +50,6 @@ class Queue {
     }
   }
 }
-
 
 /*
 var q = new Queue();
