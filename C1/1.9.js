@@ -28,3 +28,5 @@ isSubstring(s1 + s1, s2);
 // Only one call to isSubstring to see if s2 is a rotation of s1
 // it must be the case that, if s2 is a rotation, that it would appear in two iterations of s1
 // waterbottlewaterbottle must contain erbottlewat (if erbottlewat is a substring)
+
+// KMP SUBSTRING
