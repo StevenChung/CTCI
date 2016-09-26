@@ -23,6 +23,7 @@ func returnDepth(node *TreeNode) int {
 	if node == nil {
 		return 0
 	}
+	fmt.Println(node.Value)
 	left := returnDepth(node.Left)
 	if left != -1 {
 		right := returnDepth(node.Right)
