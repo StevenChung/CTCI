@@ -10,6 +10,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 type TreeNode struct {
@@ -18,12 +19,31 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-function returnDepth(node *TreeNode) (int, int) {
+func returnDepth(node *TreeNode) int {
+	if node == nil {
+		return 0
+	}
+	left := returnDepth(node.Left)
+	if left != -1 {
+		right := returnDepth(node.Right)
+		if right != -1 {
+			absV := math.Abs(float64(left) - float64(right))
+			if absV <= 1 {
+				if left > right {
+					return left + 1
+				} else {
+					return right + 1
+				}
+			} else {
+				return -1
+			}
+		}
+	}
+	return -1
 }
 
 func isBalanced(rootNode *TreeNode) bool {
-	arrResults := []int
-	return true
+	return returnDepth(rootNode) != -1
 }
 
 func main() {
@@ -38,6 +58,7 @@ func main() {
 	unbalancedTree.Right = &TreeNode{Value: 3}
 	unbalancedTree.Right.Right = &TreeNode{Value: 4}
 	unbalancedTree.Right.Right.Right = &TreeNode{Value: 4}
+	unbalancedTree.Right.Right.Right.Right = &TreeNode{Value: 4}
 
 	fmt.Println(isBalanced(balancedTree))
 	fmt.Println(isBalanced(unbalancedTree))
