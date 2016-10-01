@@ -36,7 +36,11 @@ def getIntersectionNode(headA, headB):
 
 # If pointer one reaches the end of its list before pointer two, switch
 # it to point to the other list; vice versa also applies.
-#
+# l1: 1 -> 2 -> 3
+# l2: 4 -> 5- > 6 -> 2 -> 3
+# think of it as both traversing l1 + l2, so they must meet at the intersection
+# even if lengths differ
+# if they're the same, it's more naive
 # Basically, think of it as if you combined the two lists.
 #
 # If one list is length 4 and the other is list 6 and there are no intersections,

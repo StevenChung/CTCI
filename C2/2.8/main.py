@@ -22,9 +22,14 @@ def detectCycle(head):
         slow = slow.next
         fast = fast.next.next
 
-        if id(slow) == id(fast):
+        if slow == fast:
             slow = head
+            while slow != fast:
+                slow = slow.next
+                fast = fast.next
+            return slow
 
+    return None
 # 1) Detect if there's a loop
 # - Standard
 # 2) If they do meet, move slow to the start
