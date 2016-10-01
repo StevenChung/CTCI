@@ -34,9 +34,9 @@ def detectCycle(head):
 # m = distance from head to start of cycle
 # k  = distance of the meeting point of S/F from the start of the loop
 # DistanceOfSlow = m + (p * l) + k
-# (p is some number of cycles since we don't knwo hoa mny until they met)
+# (p is some number of cycles since we don't know how many until they met)
 # DistanceOfFast = m + (q * l) + k
-# (q is some number of cycles since we don't knwo hoa mny until they met)
+# (q is some number of cycles since we don't know how many until they met)
 # Since we know slow moves only half as fast, it must be the case that...
 #
 #
