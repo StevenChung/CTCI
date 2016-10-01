@@ -23,11 +23,52 @@ def detectCycle(head):
         fast = fast.next.next
 
         if id(slow) == id(fast):
-            fast = head
+            slow = head
 
-1) Detect if there's a loop
-- Standard
-2)
+# 1) Detect if there's a loop
+# - Standard
+# 2) If they do meet, move slow to the start
+# 3) Increment both by one only until they meet
+#
+# l = length of the cycle
+# m = distance from head to start of cycle
+# k  = distance of the meeting point of S/F from the start of the loop
+# DistanceOfSlow = m + (p * l) + k
+# (p is some number of cycles since we don't knwo hoa mny until they met)
+# DistanceOfFast = m + (q * l) + k
+# (q is some number of cycles since we don't knwo hoa mny until they met)
+# Since we know slow moves only half as fast, it must be the case that...
+#
+#
+# m + (q * l) + k = 2(m + (p * l) + k)
+# reduces to
+# m + k = (l) * (q - 2p)
+# this means that m + k is a multiple of the length of the cycle
+# k is where F is at (since it is where it met S)
+# moving S to the start means that it will move m to the start
+# F will travel m + (having started at k) k
+# Thus, they must meet the start since m + k is multiple of l
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # big circle where cycle starts at head
