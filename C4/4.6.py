@@ -10,6 +10,7 @@ class TreeNode(object):
 		self.left = None
 		self.right = None
 
+##py3 has nonlocal
 def inorderSuccessor(root, nodeToCheck):
 	# in order traversal from root until you hit p
 	# then whatever is next, return that? or null
@@ -26,12 +27,34 @@ def inorderSuccessor(root, nodeToCheck):
 			inOrderCheck(node.right)
 
 	inOrderCheck(root)
-	print(arrOfNodes)
-	print(indexOfP, 'why not zero here?')
+	if indexOfP is None or (indexOfP + 1) == len(arrOfNodes):
+		return None
+	else:
+		return arrOfNodes[indexOfP + 1]
 
 
+## py2 does not have nonlocal, so dump it in a dict
+def inorderSuccessor(root, nodeToCheck):
+	# in order traversal from root until you hit p
+	# then whatever is next, return that? or null
+	hashTable = {
+	  'arrOfNodes': [],
+	  'indexOfP': None
+	}
 
+	def inOrderCheck(node):
+		if node != None:
+			inOrderCheck(node.left)
+			hashTable['arrOfNodes'].append(node)
+			if node == nodeToCheck:
+				hashTable['indexOfP'] = len(hashTable['arrOfNodes']) - 1
+			inOrderCheck(node.right)
 
+	inOrderCheck(root)
+	if hashTable['indexOfP'] is None or (hashTable['indexOfP'] + 1) == len(hashTable['arrOfNodes']):
+		return None
+	else:
+		return hashTable['arrOfNodes'][hashTable['indexOfP'] + 1]
 
 
 
@@ -46,5 +69,4 @@ testTree.left = TreeNode(2)
 testTree.right = TreeNode(3)
 testTree.left.left = TreeNode(4)
 testTree.left.right = TreeNode(5)
-inorderSuccessor(testTree, testTree.left.left)
-print(testTree.left.left == testTree.left.left)
+print(inorderSuccessor(testTree, testTree.left.left).val)
