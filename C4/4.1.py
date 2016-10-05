@@ -1,5 +1,5 @@
 # 4.1  Route Between  Nodes:  Given a directed graph,
-# design an algorithm to find out whether there  is  a
+# design an algorithm to find out whether there is a
 # route between two nodes.
 
 class Graph():
@@ -100,4 +100,4 @@ def breadthfirstsearch(g, start, end):
     return False
 
 print(breadthfirstsearch(g, start, end))
-# basically, just iterate through the graph and flag visited 
+# basically, just iterate through the graph and flag visited
